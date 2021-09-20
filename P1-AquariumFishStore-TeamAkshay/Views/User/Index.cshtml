@@ -1,0 +1,31 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "User";
+}
+
+<h2>All Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>UserId</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Gender</th>
+            <th>Mobile No</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+        <tr>
+            <th scope="row">@user.UserId</th>
+            <td>@user.Name</td>
+            <td>@user.email</td>
+            <td>@user.role</td>
+            <td>@user.gender</td>
+            <td>@user.mobileNo</td>
+        </tr>
+        }
+    </tbody>
+</table>
