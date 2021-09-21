@@ -1,0 +1,73 @@
+﻿<style>
+    .pull-right {
+        float: right !important;
+    }
+</style>
+
+@model List<P1_AquariumFishStore_TeamAkshay.Models.location>
+@{
+    ViewBag.Title = "Locations";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Locations</li>
+
+    </ol>
+
+
+
+
+    <div class="row">
+
+
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Category Details
+            <a href="../Admin/AddLocation" class="btn btn-info pull-right ">Add New</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Location</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@(Model.IndexOf(item)+1)</td>
+                            <td>@item.Branch</td>
+                            <td>
+                                @Html.ActionLink("Delete", "deleteLocation", new { id = item.Id })
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+

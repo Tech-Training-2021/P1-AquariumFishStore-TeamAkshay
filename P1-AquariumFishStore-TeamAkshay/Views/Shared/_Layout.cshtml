@@ -18,40 +18,50 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (Session["UserId"] != null)
-                    {
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>
-                            @Html.ActionLink(
-                            $"{Session["UserName"]}",
-                            "GetUserById",
-                            "User",
-                             new
-                                {
-                                    id = Session["UserId"]
-                                },
-                            null
-                            )
-                       </li>
-                       <li>@Html.ActionLink("LogOut", "userLogout", "User")</li>
-                }
-                else
-                {
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Register", "userRegister", "User")</li>
-                    <li>@Html.ActionLink("Login", "userLogin", "User")</li>
-
-                }
-
-
-
+                    <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                   
                 </ul>
+
+
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (Session["UserId"] != null)
+                        {
+
+                            <li>
+                                @Html.ActionLink(
+                                $"{Session["UserName"]}",
+                                "GetUserById",
+                                "User",
+                                 new
+                                    {
+                                        id = Session["UserId"]
+                                    },
+                                null
+                                )
+                            </li>
+                            <li>@Html.ActionLink("LogOut", "userLogout", "User")</li>
+
+                        }
+                        else
+                        {
+
+                            <li>@Html.ActionLink("Register", "userRegister", "User")</li>
+                            <li>@Html.ActionLink("Login", "userLogin", "User")</li>
+
+                        }
+
+
+                    </ul>
+
+                </div>
             </div>
         </div>
     </div>

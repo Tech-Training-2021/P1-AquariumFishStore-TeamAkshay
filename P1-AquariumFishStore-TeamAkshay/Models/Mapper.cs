@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using P1_AquariumFishStore_TeamAkshay.Models;
@@ -59,5 +60,73 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
 
             };
         }
+
+       
+        public static P1_AquariumFishStore_TeamAkshay.Models.Product Map(Data.Entities.Product product)
+        {
+            return new P1_AquariumFishStore_TeamAkshay.Models.Product()
+            {
+               
+                Id = product.Id,
+                Price = product.Price,
+                Name = product.Name,
+                Quantity = product.Quantity,
+                ProductType = product.ProductType.Category,
+            
+            };
+        }
+
+        public static P1_AquariumFishStore_TeamAkshay.Models.category Map(Data.Entities.ProductType category)
+        {
+            return new P1_AquariumFishStore_TeamAkshay.Models.category()
+            {
+                Id= category.Id,
+                Category=category.Category
+
+            };
+        }
+
+        public static Data.Entities.ProductType Map(P1_AquariumFishStore_TeamAkshay.Models.category categ)
+        {
+            return new Data.Entities.ProductType()
+            {
+                Id =categ.Id,
+                Category = categ.Category
+            };
+        }
+
+        public static P1_AquariumFishStore_TeamAkshay.Models.Orders Map(Data.Entities.OrderTable order)
+        {
+            return new P1_AquariumFishStore_TeamAkshay.Models.Orders()
+            {
+               Id = order.Id,
+               Username = order.User.name,
+               Productname= order.Product.Name,
+               Location = order.LocationTable.Branch,
+               Quantity= order.Quantity,
+               TotalPrice = order.TotalPrice
+            };
+        }
+
+        public static P1_AquariumFishStore_TeamAkshay.Models.location Map(Data.Entities.LocationTable loc)
+        {
+            return new P1_AquariumFishStore_TeamAkshay.Models.location()
+            {
+                Id = loc.Id,
+                Branch = loc.Branch
+
+            };
+        }
+
+
+        public static Data.Entities.LocationTable Map(P1_AquariumFishStore_TeamAkshay.Models.location loc)
+        {
+            return new Data.Entities.LocationTable()
+            {
+                Branch=loc.Branch
+            };
+        }
+
+
     }
 }

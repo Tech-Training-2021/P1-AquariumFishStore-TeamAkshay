@@ -7,13 +7,17 @@ using Data.Entities;
 
 namespace Data.Repository
 {
-    interface IUserRepository
+   public interface IUserRepository<T> where T : class
     {
-        IEnumerable<User> GetUser();
-        User GetUserById(int id);
-        void AddUser(User customer);
+        IEnumerable<T> GetUser();
+        T GetUserById(int id);
+        void AddUser(T customer);
         void UpdateUser(User user,int id);
-        void DeleteUser(int id);
+        void DeleteUser(int? id);
+
+        void DeleteData(int? id);
         void Save();
     }
 }
+
+

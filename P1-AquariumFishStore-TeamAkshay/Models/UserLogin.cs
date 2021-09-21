@@ -14,6 +14,8 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
         ErrorMessage = "Invalid Email.")]
         public string Email { get; set; }
 
+        public int roleId { get; set; }
+
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }

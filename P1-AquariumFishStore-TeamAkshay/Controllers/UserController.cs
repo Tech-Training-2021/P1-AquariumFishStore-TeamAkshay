@@ -9,21 +9,24 @@ using Data.Repository;
 using P1_AquariumFishStore_TeamAkshay.Models;
 
 
+
 namespace P1_AquariumFishStore_TeamAkshay.Controllers
 {
     public class UserController : Controller
     {
-        UserRepository repo;
+        IUserRepository<Data.Entities.User> interfaceobj;
+
+       
         public UserController()
         {
-            repo = new UserRepository(new AquariumModel());
+            this.interfaceobj = new UserRepository<Data.Entities.User>();
         }
 
 
         // GET: User
         public ActionResult Index()
         {
-            var user = repo.GetUser();
+            var user = interfaceobj.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.User>();
             foreach (var c in user)
             {
@@ -35,7 +38,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult GetUserById(int id)
         {
-            var user = repo.GetUserById(id);
+            var user = interfaceobj.GetUserById(id);
             if(user!=null)
                 return View(Mapper.Map(user));
             return RedirectToAction("index");
@@ -50,7 +53,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.AddUser(Mapper.Map(user));
+                interfaceobj.AddUser(Mapper.Map(user));
                 return RedirectToAction("Index");
             }
             return View(user);
@@ -66,14 +69,26 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         {
             if (ModelState.IsValid)
             {
+                UserRepository<Data.Entities.User> repo;
+                repo = new UserRepository<Data.Entities.User>(new AquariumModel());
+                
                 var userData = repo.checkUser(Mapper.Map(user));
                 if (userData != null)
                 {
-                    Session["UserId"] = userData.id;
-                    Session["UserName"] = userData.name;
-                    return RedirectToAction("Index", "Home");
-
+                    if (userData.roleId == 1)
+                    {
+                        Session["UserId"] = userData.id;
+                        Session["UserName"] = userData.name;
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else
+                    {
+                        Session["UserId"] = userData.id;
+                        Session["UserName"] = userData.name;
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
+                
   
             }
             return View();
@@ -90,7 +105,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         {
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var user = repo.GetUserById(id);
+            var user = interfaceobj.GetUserById(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -100,27 +115,27 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         }
 
-
         [HttpPost]
         public ActionResult update(P1_AquariumFishStore_TeamAkshay.Models.User user)
         {
             int id = (int)Session["UserId"];
-            repo.UpdateUser(Mapper.Map(user),id);
-            return RedirectToAction("index","User");
+            interfaceobj.UpdateUser(Mapper.Map(user), id);
+            return RedirectToAction("index", "User");
         }
 
-        public ActionResult delete(int id)
+
+       
+
+        public ActionResult delete(int? id)
         {
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            repo.DeleteUser(id);
+            interfaceobj.DeleteUser(id);
             Session.Abandon();
             return RedirectToAction("userLogin", "User");
 
 
         }
-
-
 
 
 

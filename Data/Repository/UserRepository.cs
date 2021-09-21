@@ -1,38 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Entities;
 
+
 namespace Data.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository<T> : IUserRepository<T> where T : class
     {
+        private AquariumModel context ;
+        private IDbSet<T> dbEntity;
 
-        private AquariumModel db;
-        public UserRepository(AquariumModel db)
+        public UserRepository()
         {
-            this.db = db;
+            // this.db = db;
+            this.context = new AquariumModel();
+            dbEntity = context.Set<T>();
+
+        }
+        public UserRepository(AquariumModel context)
+        {
+            // this.db = db;
+            this.context = new AquariumModel();
+            dbEntity = context.Set<T>();
+
         }
 
-        public IEnumerable<User> GetUser()
+
+        public IEnumerable<T> GetUser()
         {
-            return db.Users.ToList();
+            return dbEntity.ToList();
         }
 
 
-        public void AddUser(User customer)
+        public void AddUser(T data)
         {
-            db.Users.Add(customer);
+            dbEntity.Add(data);
             Save();
         }
 
-        public User GetUserById(int id)
+        public T GetUserById(int id)
         {
+           // return dbEntity.Find(id);
             if (id > 0)
             {
-                var user = db.Users.Find(id);
+                var user = dbEntity.Find(id);
                 if (user != null)
                     return user;
                 else
@@ -46,11 +62,12 @@ namespace Data.Repository
 
 
 
-        public void UpdateUser(User user,int id)
+        public void UpdateUser(User user, int id)
         {
-            User updatedUser = (from c in db.Users
-                              where c.id == id
-                              select c).FirstOrDefault();
+            
+            User updatedUser = (from c in context.Users
+                                where c.id == id
+                                select c).FirstOrDefault();
             updatedUser.name = user.name;
             updatedUser.email = user.email;
             updatedUser.phone_Number = user.phone_Number;
@@ -58,27 +75,39 @@ namespace Data.Repository
 
         }
 
-        public void DeleteUser(int id)
+        public void DeleteUser(int? id)
         {
-            var user = db.Users.Find(id);
+            var user = context.Users.Find(id);
             if (user != null)
             {
-                db.Users.Remove(user);
+                context.Users.Remove(user);
                 Save();
             }
             else
-                throw new ArgumentException("Cat is not found");
+                throw new ArgumentException("User is not found");
+        }
+
+        public void DeleteData(int? id)
+        {
+            var user = dbEntity.Find(id);
+            if (user != null)
+            {
+               dbEntity.Remove(user);
+                Save();
+            }
+            else
+                throw new ArgumentException("Data is not found");
         }
 
 
         public User checkUser(User user)
         {
-            return db.Users.Where(e => e.email == user.email && e.password == user.password).FirstOrDefault();
- 
+            return context.Users.Where(e => e.email == user.email && e.password == user.password).FirstOrDefault();
+
         }
         public void Save()
         {
-            db.SaveChanges();
+            context.SaveChanges();
         }
 
 

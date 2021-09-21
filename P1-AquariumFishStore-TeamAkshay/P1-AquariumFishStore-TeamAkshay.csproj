@@ -126,18 +126,33 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\category.cs" />
+    <Compile Include="Models\location.cs" />
+    <Compile Include="Models\locationJunction.cs" />
     <Compile Include="Models\Mapper.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminStyle\assets\demo\chart-area-demo.js" />
+    <Content Include="AdminStyle\assets\demo\chart-bar-demo.js" />
+    <Content Include="AdminStyle\assets\demo\chart-pie-demo.js" />
+    <Content Include="AdminStyle\assets\demo\datatables-demo.js" />
+    <Content Include="AdminStyle\assets\img\error-404-monochrome.svg" />
+    <Content Include="AdminStyle\css\styles.css" />
+    <Content Include="AdminStyle\js\datatables-simple-demo.js" />
+    <Content Include="AdminStyle\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -178,6 +193,19 @@
     <Content Include="Views\User\userRegister.cshtml" />
     <Content Include="Views\User\userLogin.cshtml" />
     <Content Include="Views\User\update.cshtml" />
+    <Content Include="Views\User\delete.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Categories.cshtml" />
+    <Content Include="Views\Admin\Products.cshtml" />
+    <Content Include="Views\Admin\OrderHistory.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
+    <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Admin\Locations.cshtml" />
+    <Content Include="Views\Admin\AddLocation.cshtml" />
+    <Content Include="Views\Admin\deleteLocation.cshtml" />
+    <Content Include="Views\Admin\deleteCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -200,7 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{b7515f39-a048-4498-bdf8-4e6206bfdd47}</Project>
+      <Project>{eef53971-8262-4594-ab57-39cbe259ac94}</Project>
       <Name>Data</Name>
     </ProjectReference>
   </ItemGroup>
