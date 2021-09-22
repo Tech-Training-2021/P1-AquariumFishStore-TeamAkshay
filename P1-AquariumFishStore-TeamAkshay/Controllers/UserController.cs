@@ -15,11 +15,14 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
     public class UserController : Controller
     {
         IUserRepository<Data.Entities.User> interfaceobj;
+        IUserRepository<Data.Entities.Product> product;
 
-       
+
+
         public UserController()
         {
             this.interfaceobj = new UserRepository<Data.Entities.User>();
+            this.product = new UserRepository<Data.Entities.Product>();
         }
 
 
@@ -195,6 +198,18 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             return View();
         }
 
-       
+
+        public ActionResult shopnow()
+        {
+            var prod = product.GetUser();
+            var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Product>();
+            foreach (var c in prod)
+            {
+                data.AddRange(Mapper.Map(c));
+            }
+            return View(data);
+        }
+
+
     }
 }
