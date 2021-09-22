@@ -13,9 +13,9 @@ namespace Data.Repository
         T GetUserById(int id);
         void AddUser(T customer);
         void UpdateUser(User user,int id);
-        void DeleteUser(int? id);
-
+        void UpdateProduct(Product prod, int id);
         void DeleteData(int? id);
+        void changepassword(string str , int id);
         void Save();
     }
 }

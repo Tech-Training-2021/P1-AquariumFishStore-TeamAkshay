@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/HomeStyle/css/style.css" rel="stylesheet" />
+<div class="textsmall">
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3 style="font-size:50px">Fishes & Aquariums </h3>
+            <span> natural & beautiful fishes </span>
+            <p id="p1" style="font-size:20px">"I think there's something great and generic about goldfish. They're everybody's first pet."– <i>Paul Rudd</i></p>
+
+            @Html.ActionLink("SHOP NOW", "userLogin", "User", new { @class = "btn11" })
+        </div>
+
+    </section>
+
+
+    <section class="icons-container">
+
+        <div class="icons">
+            <img src="~/Img/icon-1.png" alt="">
+            <div class="info">
+                <h3>free delivery</h3>
+                <span>on all orders</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="~/Img/icon-2.png" alt="">
+            <div class="info">
+                <h3>10 days returns</h3>
+                <span>moneyback guarantee</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="~/Img/icon-3.png" alt="">
+            <div class="info">
+                <h3>offer & gifts</h3>
+                <span>on all orders</span>
+            </div>
+        </div>
+
+        <div class="icons">
+            <img src="~/Img/icon-4.png" alt="">
+            <div class="info">
+                <h3>secure paymens</h3>
+                <span>protected by paypal</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- icons section ends -->
+    <!-- Gallery -->
+    <!-- Gallery -->
+    <!-- review section starts  -->
+
+    <section class="review" id="review">
+
+        <h1 class="heading"> Our <span>Products</span> </h1>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <img src="~/Img/fish1.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+
+                <img src="~/Img/img10.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+            </div>
+
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <img src="~/Img/img2.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+
+                <img src="~/Img/img3.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+                <img src="~/Img/img4.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <img src="~/Img/img8.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+
+                <img src="~/Img/img7.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+
+                <img src="~/Img/img5.jpg"
+                     class="w-100 shadow-1-strong rounded mb-4"
+                     alt="" />
+            </div>
+
+            
+
+        </div>
+
+        <h1 class="heading"> customer's <span>review</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box" style="width=150px">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p style="font-size: 15px; color: black">This was the first time ordering from this florist and I was completely satisfied. I had requested the flowers be delivered between 5PM - 7PM and at 5:20PM I received an email stating they were on their way and within minutes the flowers were delivered. The arrangement looks pretty close to the one in the photo and the flowers appear fresh. Great service.</p>
+                <div class="user">
+                    <img src="~/Img/testimonials-1.jpg" alt="">
+                    <div class="user-info">
+                        <h3 style="font-size:15px">Henry Woods</h3>
+                        <span style="font-size:15px">Extremely satisfied</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box" style="width=150px">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+
+                <p style="font-size: 15px; color: black">I ordered a bouquet of flowers, from my office in Dublin, to be delivered to a very special someone in downtown SF. To say she was pleased with the arrangement would be an understatement. Thank you so much for the wonderful service.</p>
+                <div class="user">
+                    <img src="~/Img/testimonials-2.jpg" alt="">
+                    <div class="user-info">
+                        <h3 style="font-size:15px">Elizabeth Ruth</h3>
+                        <span style="font-size:15px">Happy customer</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+            <div class="box" style="width=10px">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+
+                <p style="font-size:15px ; color:black">It was my friend's special birthday and I ordered flowers from your website from across the country that morning. She received it first thing that morning and it was lovely. You made my friend's birthday great. Thanks so much for the wonderful customer service and flower arrangement.</p>
+                <div class="user">
+                    <img src="~/Img/testimonials-3.jpg" alt="">
+                    <div class="user-info">
+                        <h3 style="font-size:15px">Harris Swift</h3>
+                        <span style="font-size:15px">happy customer</span>
+                    </div>
+                </div>
+                <span class="fas fa-quote-right"></span>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+<!-- review section ends -->
+
+
+

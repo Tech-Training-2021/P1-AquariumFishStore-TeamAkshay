@@ -2,13 +2,10 @@
 
 @{
     ViewBag.Title = "GetUserById";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-<h2>GetUserById</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -23,7 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.gender)
         </th>
-  
+       
         <th>
             @Html.DisplayNameFor(model => model.mobileNo)
         </th>
@@ -44,13 +41,14 @@
         <td>
             @Html.DisplayFor(model => model.gender)
         </td>
+        
         <td>
             @Html.DisplayFor(model => model.mobileNo)
         </td>
-   
         <td>
-            @Html.ActionLink("Edit", "update", new { id = Model.UserId }) |
-            @Html.ActionLink("Delete", "delete", new { id = Model.UserId })
+            @Html.ActionLink("Update", "update", new { id= Model.UserId }) |
+          
+            @Html.ActionLink("Delete", "delete", new { id= Model.UserId })
         </td>
     </tr>
 

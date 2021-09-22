@@ -134,10 +134,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\category.cs" />
+    <Compile Include="Models\changePassword.cs" />
     <Compile Include="Models\location.cs" />
     <Compile Include="Models\locationJunction.cs" />
     <Compile Include="Models\Mapper.cs" />
     <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -161,6 +163,33 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HomeStyle\css\style.css" />
+    <Content Include="Img\bg-masthead.jpg" />
+    <Content Include="Img\bg-showcase-1.jpg" />
+    <Content Include="Img\bg-showcase-2.jpg" />
+    <Content Include="Img\bg-showcase-3.jpg" />
+    <Content Include="Img\bg2.jpg" />
+    <Content Include="Img\bg4.jpg" />
+    <Content Include="Img\bgfish.jpg" />
+    <Content Include="Img\email.png" />
+    <Content Include="Img\fish1.jpg" />
+    <Content Include="Img\house.png" />
+    <Content Include="Img\icon-1.png" />
+    <Content Include="Img\icon-2.png" />
+    <Content Include="Img\icon-3.png" />
+    <Content Include="Img\icon-4.png" />
+    <Content Include="Img\img10.jpg" />
+    <Content Include="Img\img2.jpg" />
+    <Content Include="Img\img3.jpg" />
+    <Content Include="Img\img4.jpg" />
+    <Content Include="Img\img5.jpg" />
+    <Content Include="Img\img7.jpg" />
+    <Content Include="Img\img8.jpg" />
+    <Content Include="Img\img9.jpg" />
+    <Content Include="Img\phone-xxl.png" />
+    <Content Include="Img\testimonials-1.jpg" />
+    <Content Include="Img\testimonials-2.jpg" />
+    <Content Include="Img\testimonials-3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -185,11 +214,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\GetUserById.cshtml" />
     <Content Include="Views\User\userRegister.cshtml" />
     <Content Include="Views\User\userLogin.cshtml" />
     <Content Include="Views\User\update.cshtml" />
@@ -206,6 +232,14 @@
     <Content Include="Views\Admin\AddLocation.cshtml" />
     <Content Include="Views\Admin\deleteLocation.cshtml" />
     <Content Include="Views\Admin\deleteCategory.cshtml" />
+    <Content Include="Views\User\GetUserById.cshtml" />
+    <Content Include="Views\Shared\UserLayout.cshtml" />
+    <Content Include="Views\User\Dashboard.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\About.cshtml" />
+    <Content Include="Views\User\Contact.cshtml" />
+    <Content Include="Views\Admin\productUpdate.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

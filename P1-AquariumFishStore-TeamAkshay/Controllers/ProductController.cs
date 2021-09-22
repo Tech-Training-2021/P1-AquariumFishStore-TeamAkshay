@@ -25,7 +25,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Product>();
             foreach (var c in product)
             {
-                data.Add(Mapper.Map(c));
+                data.AddRange(Mapper.Map(c));
             }
             return View(data);
         }

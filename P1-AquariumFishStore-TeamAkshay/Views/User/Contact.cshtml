@@ -1,0 +1,78 @@
+﻿<style>
+    .map-container {
+        overflow: hidden;
+        padding-bottom: 30%;
+        position: relative;
+        height: 0;
+    }
+
+        .map-container iframe {
+            padding-right: 10px;
+            top: 10px;
+            height: 90%;
+            width: 100%;
+            float: left;
+            position: absolute;
+        }
+
+    .concolumn {
+        float: left;
+        width: 45%;
+        padding-left: 60px;
+        border: none;
+    }
+
+    .conrow:after {
+        border: none;
+    }
+
+    span {
+        color: red;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .condiv1 {
+        height: 585px;
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .condiv2 {
+        height: 87%;
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+</style>
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="condiv1">
+    <div class="condiv2">
+        <div class="conrow">
+            <div class="concolumn">
+                <h1>CONTACT DETAILS</h1>
+                <h3>Registered office:</h3>
+                <p>
+                    <img src="~/Img/house.png" class="icon"> 2C/102,shree Sai Shilp Society,<br> Gavanpada,Mulund(East),<br>Mumbai-400 081<br>
+                    <h3>Development Center :</h3>
+                    <img src="~/Img/house.png" class="icon">  Unit 102,Rajhans  Annex,Gaondevi Road,<br> Naupada, Thane(West),<br> Mumbai-400 602<br><br>
+                    <img src="~/Img/phone-xxl.png" class="icon">  +91 22-25636065<br>
+                    <img src="~/Img/phone-xxl.png" class="icon"> +91 9833163040<br><br><br>
+                    <img src="~/Img/email.png" class="icon">  support@gmail.com
+                </p>
+            </div>
+
+            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                        style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+﻿<style>
+
+    p {
+        text-indent: 30px;
+    }
+
+    .gray-bg {
+        background: #F1F1F1 !important;
+    }
+
+    .about-title {
+    }
+
+        .about-title h1 {
+            color: #535353;
+            font-size: 45px;
+            font-weight: 600;
+        }
+
+        .about-title span {
+            color: #AF0808;
+            font-size: 45px;
+            font-weight: 700;
+        }
+
+        .about-title h3 {
+            color: #535353;
+            font-size: 23px;
+            margin-bottom: 24px;
+        }
+
+        .about-title p {
+            color: #7a7a7a;
+            line-height: 1.8;
+            margin: 0 0 15px;
+        }
+
+    .about-paddingB {
+        padding-bottom: 12px;
+    }
+
+    .about-img {
+        padding-left: 57px;
+    }
+
+    /* Social Icons */
+    .about-icons {
+        margin: 48px 0px 48px 0px;
+    }
+
+        .about-icons i {
+            margin-right: 10px;
+            padding: 0px;
+            font-size: 35px;
+            color: #323232;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+        }
+
+        .about-icons li {
+            margin: 0px;
+            padding: 0;
+            display: inline-block;
+        }
+
+    #social-fb:hover {
+        color: #3B5998;
+        transition: all .001s;
+    }
+
+    #social-tw:hover {
+        color: #4099FF;
+        transition: all .001s;
+    }
+
+    #social-gp:hover {
+        color: #d34836;
+        transition: all .001s;
+    }
+
+    #social-em:hover {
+        color: #f39c12;
+        transition: all .001s;
+    }
+</style>
+
+
+@{ ViewBag.Title = "About";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+@*<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="about-section paddingTB60 gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6">
+                <div class="about-title clearfix">
+                    <h1>About <span>US</span></h1>
+                    <p align="justify">
+
+                        AquariamFishStore is a leading online aquarium store in India that aims to offer high-grade aquarium supplies to everyone interested in fish-keeping. With an experience of more than a decade and complete know-how on aquarium plant cultivation, AquariamFishStore has become a leading supplier of aquatic plants in India. Large-scale cultivation of different species of aquatic plants has made Bunnycart the most reliable online destination among the aquarists who are aiming for a beautiful community aquarium or planted aquarium.Furthermore, the robust logistic procedure ensures that each product is procured against the order and shipped at the same time to your doorstep. We ensure that all the products are delivered fresh, and there is no deterioration when they are stocked.Apart from aquarium plants, we also deliver aquarium substrate and aquarium accessories like décor items, pumps, filters, and much more. You can also shop for high-quality fish food from AquariamFishStore. We also deliver aquarium fish to selected cities of India via reliable shipping methods.
+
+                        Each product shipped from AquariamFishStore goes through a stringent quality check to meet the expectations of the customers. Every consignment is packed with utmost care to survive long travel hours and reach its destination without any issues.For all your aquarium needs, look no further than AquariamFishStore and shop for fresh aquarium plants, high-quality aquarium accessories, and everything in-between!
+
+                    </p>
+                    <div class="about-icons">
+
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a> </li>
+                            <li><a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a> </li>
+                            <li> <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a> </li>
+                            <li> <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a> </li>
+                        </ul>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <div class="about-img">
+                    <img src="https://devitems.com/preview/appmom/img/mobile/2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

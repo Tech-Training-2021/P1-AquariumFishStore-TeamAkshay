@@ -75,17 +75,19 @@ namespace Data.Repository
 
         }
 
-        public void DeleteUser(int? id)
+        public void UpdateProduct(Product prod, int id)
         {
-            var user = context.Users.Find(id);
-            if (user != null)
-            {
-                context.Users.Remove(user);
-                Save();
-            }
-            else
-                throw new ArgumentException("User is not found");
+            Product updatedProduct = (from c in context.Products
+                                where c.Id == id
+                                select c).FirstOrDefault();
+            updatedProduct.Name = prod.Name;
+            updatedProduct.Quantity = prod.Quantity;
+            updatedProduct.Price = prod.Price;                       
+            Save();
+
         }
+
+
 
         public void DeleteData(int? id)
         {
@@ -110,6 +112,17 @@ namespace Data.Repository
             context.SaveChanges();
         }
 
+        public void changepassword(string cPass, int id)
+        {
+            var user = context.Users.Find(id);
+            user.password = cPass;
+            Save();
+        }
+
+        public IEnumerable<ProductType> getProductType()
+        {
+            return context.ProductTypes.ToList();
+        }
 
     }
 }

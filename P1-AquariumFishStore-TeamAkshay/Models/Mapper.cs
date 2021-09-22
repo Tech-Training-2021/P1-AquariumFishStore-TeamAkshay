@@ -11,6 +11,8 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
     {
         public static P1_AquariumFishStore_TeamAkshay.Models.User Map(Data.Entities.User user)
         {
+            Password pass = new Password();
+
             return new P1_AquariumFishStore_TeamAkshay.Models.User()
             {
                 UserId = user.id,
@@ -18,7 +20,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
                 email = user.email,
                 role = user.role.role1,
                 gender=user.gender.gender1,
-                password=user.password,
+                password= pass.encodePassword(user.password),
                 mobileNo=user.phone_Number
 
             };
@@ -39,40 +41,65 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
 
         public static Data.Entities.User Map(UserRegister user)
         {
+            Password pass = new Password();
+
             return new Data.Entities.User()
             {
+
                 name = user.Name,
                 roleId=2,
                 email = user.Email,
                 genderId = user.Gender,
                 phone_Number=user.mobileNo,
-                password=user.Password
-                
+                password= pass.encodePassword(user.Password)
+
             };
         }
 
         public static Data.Entities.User Map(UserLogin user)
         {
+            Password pass = new Password();
+
             return new Data.Entities.User()
             {
                 email = user.Email,   
-                password = user.Password
+                password = pass.encodePassword(user.Password)
 
             };
         }
 
        
-        public static P1_AquariumFishStore_TeamAkshay.Models.Product Map(Data.Entities.Product product)
+        public static IEnumerable<Product> Map(Data.Entities.Product product)
         {
-            return new P1_AquariumFishStore_TeamAkshay.Models.Product()
+            P1_AquariumFishStore_TeamAkshay.Models.Product xyz;
+            List<Product> pro = new List<Product>();
+            foreach (var p in product.LocationJunctions)
             {
-               
-                Id = product.Id,
-                Price = product.Price,
-                Name = product.Name,
-                Quantity = product.Quantity,
-                ProductType = product.ProductType.Category,
-            
+                xyz = new P1_AquariumFishStore_TeamAkshay.Models.Product()
+                {
+
+                    Id = product.Id,
+                    Price = product.Price,
+                    Name = product.Name,
+                    Location = p.LocationTable.Branch,
+                    Quantity = product.Quantity,
+                    ProductType = product.ProductType.Category,
+
+                };
+                pro.Add(xyz);
+            }
+            return pro;
+
+        }
+
+        public static Data.Entities.Product Map(P1_AquariumFishStore_TeamAkshay.Models.Product prod)
+        {
+            return new Data.Entities.Product()
+            {
+                Name = prod.Name,
+                Quantity = prod.Quantity,
+                Price = prod.Price
+
             };
         }
 
@@ -127,6 +154,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
             };
         }
 
+       
 
     }
 }

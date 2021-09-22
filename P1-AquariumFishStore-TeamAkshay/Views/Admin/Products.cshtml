@@ -38,6 +38,7 @@
                     <tr>
                         <th>Sr. No.</th>
                         <th>Product Name</th>
+                        <th>Location</th>
                         <th>Category</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -49,6 +50,7 @@
                     <tr>
                         <th>Sr. No.</th>
                         <th>Product Name</th>
+                        <th>Location</th>
                         <th>Category</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -62,11 +64,13 @@
                     <tr>
                         <td>@(Model.IndexOf(item)+1)</td>
                         <td>@item.Name</td>
+                        <td>@item.Location</td>
                         <td>@item.ProductType</td>
                         <td>@item.Quantity</td>
                         <td>@item.Price</td>
                         <td>
-                            @Html.ActionLink("Edit", "CategoryEdit", new { catId = item.Id })
+                            @Html.ActionLink("Update", "productUpdate", new { id = item.Id , loc = item.Location })
+                            @Html.ActionLink("Delete", "productDelete", new { id = item.Id, loc = item.Location })
                         </td>
 
 

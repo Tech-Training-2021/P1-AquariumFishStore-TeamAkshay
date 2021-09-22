@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Data.Entities;
 using Data.Repository;
 using P1_AquariumFishStore_TeamAkshay.Models;
+using Product = P1_AquariumFishStore_TeamAkshay.Models.Product;
 
 namespace P1_AquariumFishStore_TeamAkshay.Controllers
 {
@@ -50,9 +51,45 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Product>();
             foreach (var c in prod)
             {
-                data.Add(Mapper.Map(c));
+                data.AddRange(Mapper.Map(c));
             }
             return View(data);
+        }
+
+        public ActionResult productUpdate(int id ,string loc)
+        {
+            Session["productId"] = id;
+            if (id < 1)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var pro = product.GetUserById(id);
+            P1_AquariumFishStore_TeamAkshay.Models.Product mainPro = new Models.Product();
+
+            if (pro == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var proList = Mapper.Map(pro);
+                foreach (var x in proList)
+                {
+                    if (x.Location == loc)
+                    {
+                        mainPro = x;
+                        break;
+                    }
+                }
+            }
+            return View(mainPro);
+        }
+
+        [HttpPost]
+        public ActionResult productUpdate(P1_AquariumFishStore_TeamAkshay.Models.Product upProduct)
+        {
+            int id = int.Parse(Session["productId"].ToString());
+            product.UpdateProduct(Mapper.Map(upProduct),id);
+            Session["productId"] = null;
+            return  RedirectToAction("Products","Admin");
         }
 
         public ActionResult OrderHistory()
