@@ -124,5 +124,17 @@ namespace Data.Repository
             return context.ProductTypes.ToList();
         }
 
+        public void DeletePro(int id, int locId)
+        {
+            var pro = context.LocationJunctions.Where(x => x.ProductId == id && x.LocationId == locId).FirstOrDefault();
+            if (pro != null)
+            {
+                context.LocationJunctions.Remove(pro);
+                Save();
+            }
+            else
+                throw new ArgumentException("Data is not found");
+        }
+
     }
 }

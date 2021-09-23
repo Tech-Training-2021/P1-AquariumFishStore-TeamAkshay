@@ -70,7 +70,7 @@
                         <td>@item.Price</td>
                         <td>
                             @Html.ActionLink("Update", "productUpdate", new { id = item.Id , loc = item.Location })
-                            @Html.ActionLink("Delete", "productDelete", new { id = item.Id, loc = item.Location })
+                            @Html.ActionLink("Delete", "productDelete", new { id = item.Id, locId = item.locationId })
                         </td>
 
 

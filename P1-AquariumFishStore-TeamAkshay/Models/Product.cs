@@ -40,5 +40,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
        [RegularExpression(("^[0-9]{11}$"),
         ErrorMessage = "Price shoul be in numbers.")]
         public decimal Price { get; set; }
+
+        public int locationId;
     }
 }
