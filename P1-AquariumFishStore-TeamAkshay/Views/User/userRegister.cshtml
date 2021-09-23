@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>userRegister</h2>
+
 
 
 @using (Html.BeginForm()) 
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Register User</h4>
+    <h3>Register User</h3>
     <hr />
     <br />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })

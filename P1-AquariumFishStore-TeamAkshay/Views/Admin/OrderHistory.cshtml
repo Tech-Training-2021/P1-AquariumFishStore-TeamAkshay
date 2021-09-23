@@ -1,14 +1,15 @@
-﻿<style>
-    .pull-right {
-        float: right !important;
-    }
-</style>
+﻿@model IEnumerable<P1_AquariumFishStore_TeamAkshay.Models.OrderDetailModel>
 
-@model List<P1_AquariumFishStore_TeamAkshay.Models.Orders>
 @{
     ViewBag.Title = "OrderHistory";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+
+<h2>Order History</h2>
+
+
+
+
 
 <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -29,32 +30,32 @@
 
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Order History
-            
+            Order History Details
+           
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-                        <th>Sr. No.</th>
-                        <th>UserName</th>
-                        <th>Product Name</th>
-                        <th>Location</th>
+                        <th>Sr. No</th>
+                        <th>Order Detail Id</th>
+                        <th>Order Id</th>
+                        <th>Product Id</th>
                         <th>Quantity</th>
+                        <th>Unit of Price</th>
                         <th>Total Price</th>
-                        
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Sr. No.</th>
-                        <th>UserName</th>
-                        <th>Product Name</th>
-                        <th>Location</th>
+                        <th>Sr. No</th>
+                        <th>Order Detail Id</th>
+                        <th>Order Id</th>
+                        <th>Product Id</th>
                         <th>Quantity</th>
+                        <th>Unit of Price</th>
                         <th>Total Price</th>
-                        
                     </tr>
                 </tfoot>
                 <tbody>
@@ -62,13 +63,13 @@
                     {
 
                     <tr>
-                        <td>@(Model.IndexOf(item)+1)</td>
-                        <td>@item.Username</td>
-                        <td>@item.Productname</td>
-                        <td>@item.Location</td>
+                        <td>@item.OrderDetailId</td>
+                        <td>@item.OrderDetailId</td>
+                        <td>@item.OrderId</td>
+                        <td>@item.ProductId</td>
                         <td>@item.Quantity</td>
-                        <td>@item.TotalPrice</td>
-                        
+                        <td>@item.UnitPrice</td>
+                        <td>@item.Total</td>
                         
 
 
@@ -78,7 +79,6 @@
             </table>
         </div>
     </div>
-
 
 
 

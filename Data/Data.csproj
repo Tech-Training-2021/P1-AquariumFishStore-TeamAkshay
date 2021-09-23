@@ -56,6 +56,8 @@
     <Compile Include="Entities\gender.cs" />
     <Compile Include="Entities\LocationJunction.cs" />
     <Compile Include="Entities\LocationTable.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\OrderTable.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductType.cs" />

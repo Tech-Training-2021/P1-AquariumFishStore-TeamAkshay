@@ -1,0 +1,64 @@
+﻿@model IEnumerable<P1_AquariumFishStore_TeamAkshay.Models.ShoppingCartModel>
+
+@{
+    ViewBag.Title = "Cart";
+    decimal TotalAmount = 0.00m;
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>Shopping Cart</h2>
+<hr style="border-top: 2px solid maroon" />
+<br />
+
+
+@using (Html.BeginForm("AddOrder", "User", FormMethod.Post))
+{
+    <table  class="table-condensed" style="width: 100%">
+        @foreach (var item in Model)
+        {
+            TotalAmount += item.Total;
+            <tr >
+                
+                <td >
+                    @item.ProductName
+                </td>
+                <td style="text-align: right">
+                    @item.Quantity.ToString("#,##0")
+                </td>
+                <td style="text-align: right">
+                    @item.UnitPrice.ToString("#,##0.00")
+                </td>
+                <td style="text-align: right">
+                    @item.Total.ToString("#,##0.00")
+                </td>
+            </tr>
+        }
+        <tr style="border-top: 2px solid maroon">
+            <td colspan="4" style="text-align: right">
+                <br />
+                <h3>Total Amount   :</h3>
+            </td>
+            <td style="text-align: right">
+                <br />
+                <h3>@TotalAmount.ToString("#,##0.00")</h3>
+            </td>
+        </tr>
+
+        <tr style="text-align: right">
+            <td colspan="5">
+                <br />
+                <input type="submit" value="Buy" name="Save" class="btn btn-primary" id="SaveOrder" />
+            </td>
+        </tr>
+
+        <tr style="text-align: left">
+            <td >
+                <br />
+                <br />
+                <br />
+                @Html.ActionLink("Back to Shopping", "shopnow", "User")
+            </td>
+        </tr>
+    </table>
+
+}

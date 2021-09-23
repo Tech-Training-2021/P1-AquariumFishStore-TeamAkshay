@@ -123,16 +123,17 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
             };
         }
 
-        public static P1_AquariumFishStore_TeamAkshay.Models.Orders Map(Data.Entities.OrderTable order)
+        public static P1_AquariumFishStore_TeamAkshay.Models.OrderDetailModel Map(Data.Entities.OrderDetail order)
         {
-            return new P1_AquariumFishStore_TeamAkshay.Models.Orders()
+            return new P1_AquariumFishStore_TeamAkshay.Models.OrderDetailModel()
             {
-               Id = order.Id,
-               Username = order.User.name,
-               Productname= order.Product.Name,
-               Location = order.LocationTable.Branch,
+               OrderDetailId = order.OrderDetailId,
+               OrderId = order.OrderId,
+               ProductId = order.ProductId,
                Quantity= order.Quantity,
-               TotalPrice = order.TotalPrice
+               UnitPrice = order.UnitPrice,
+               Total=order.Total
+
             };
         }
 

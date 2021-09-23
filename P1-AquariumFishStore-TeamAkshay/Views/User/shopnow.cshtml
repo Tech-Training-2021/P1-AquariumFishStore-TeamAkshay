@@ -26,18 +26,20 @@
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-@*<script type="text/javascript">
-        function AddToCart(item) {
-            var itemId = $(item).attr("itemid");
+<script type="text/javascript">
+    function AddToCart(item) {
+        
+        var itemId = $(item).attr("itemid");
+       // alert(itemId);
             var formData = new FormData();
             formData.append("ItemId", itemId);
-            $.ajax({
+            $.ajax({                
                 async: true,
                 type: 'POST',
                 contentType: false,
                 processData: false,
                 data: formData,
-                url: '/Shopping/Index',
+                url: '/User/shopnow',
                 success: function(data) {
                     if (data.Success) {
                         $("#cartItem").text("Cart(" + data.Counter + ")");
@@ -48,20 +50,22 @@
                 }
             });
         }
-    </script>*@
+
+
+    </script>
 <div class="container">
     <h2 style="font-size:50px;color:darkblue;text-decoration-style:wavy;text-align:center">Our Products</h2>
    
 </div>
 
-<section class="products" >
+<section class="products">
     @foreach (var item in Model)
     {
         <div class="box-container" id="products" style="width =50%; color: darkgoldenrod">
             <div class="box">
 
                 <div style="height:40px;width:50px;align-self:center">
-                    <img style="height:210px ; border-radius:14px ; border:solid 2px darkblue"  src="~/Img/img2.jpg" alt="">
+                    <img style="height:210px ; border-radius:14px ; border:solid 2px darkblue" src="~/Img/img2.jpg" alt="">
                 </div>
                 <div>
                     <div class="col-md-10" style="text-align: right">
@@ -78,12 +82,16 @@
                     </div>
                 </div>
                 <div class="col-md-10" style="text-align: right; margin-bottom: 10px;  padding: 2px">
-                      <span style="color:aliceblue;font-weight:bold;" class = "btn btn-info pull-right">
-                        @Html.ActionLink("Add to Cart", "addtocart", "User", new { id = item.Id })
-                    </span>
+                    <input type="submit" value="Add to Cart" itemid="@item.Id" id="btnAddToCart" onclick="AddToCart(this)" class="btn btn-default btn-primary" />
                 </div>
             </div>
-            
+
         </div>
     }
-    </section>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">            
+            @Html.ActionLink("BUY", "confirmOrder",new { @class = "btn btn-info pull-right" })
+        </div>
+    </div>
+</section>

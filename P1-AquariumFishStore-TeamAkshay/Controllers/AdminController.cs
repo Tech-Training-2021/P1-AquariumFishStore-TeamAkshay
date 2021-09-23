@@ -16,7 +16,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         // GET: Admin
         IUserRepository<Data.Entities.ProductType> category;
         IUserRepository<Data.Entities.Product> product;
-        IUserRepository<Data.Entities.OrderTable> order;
+        IUserRepository<Data.Entities.OrderDetail> order;
         IUserRepository<Data.Entities.User> user;
         IUserRepository<Data.Entities.LocationTable> location;
 
@@ -25,17 +25,26 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         {
             this.category = new UserRepository<Data.Entities.ProductType>();
             this.product = new UserRepository<Data.Entities.Product>();
-            this.order = new UserRepository<Data.Entities.OrderTable>();
+            this.order = new UserRepository<Data.Entities.OrderDetail>();
             this.user = new UserRepository<Data.Entities.User>();
             this.location = new UserRepository<Data.Entities.LocationTable>();
         }
         public ActionResult Dashboard()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
+           
         }
 
         public ActionResult Categories()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var cat = category.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.category>();
             foreach (var c in cat)
@@ -47,6 +56,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult Products()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var prod = product.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Product>();
             foreach (var c in prod)
@@ -58,6 +71,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult productUpdate(int id ,string loc)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             Session["productId"] = id;
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -94,8 +111,12 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult OrderHistory()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var OHistory = order.GetUser();
-            var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Orders>();
+            var data = new List<P1_AquariumFishStore_TeamAkshay.Models.OrderDetailModel>();
             foreach (var c in OHistory)
             {
                 data.Add(Mapper.Map(c));
@@ -105,6 +126,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult AddCategory()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
         }
 
@@ -123,6 +148,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult UserDetails()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var userD = user.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.User>();
             foreach (var c in userD)
@@ -135,6 +164,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         
         public ActionResult deleteCustomer(int? id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             user.DeleteData(id);
@@ -145,6 +178,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult deleteLocation(int? id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             location.DeleteData(id);
@@ -155,6 +192,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult deleteCategory(int? id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             category.DeleteData(id);
@@ -165,6 +206,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult Locations()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var loc = location.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.location>();
             foreach (var c in loc)
@@ -176,7 +221,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult AddLocation()
         {
-           
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
         }
 
@@ -193,6 +241,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult productDelete(int id, int locId)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             product.DeletePro(id, locId);
             return RedirectToAction("Products", "Admin");
 
@@ -200,6 +252,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult AddProduct()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
 
         }

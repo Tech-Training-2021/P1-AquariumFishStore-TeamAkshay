@@ -21,6 +21,8 @@ namespace Data.Entities
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<role> roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -85,6 +87,10 @@ namespace Data.Entities
 
             modelBuilder.Entity<User>()
                 .Property(e => e.phone_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderNumber)
                 .IsUnicode(false);
         }
     }

@@ -16,6 +16,8 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
     {
         IUserRepository<Data.Entities.User> interfaceobj;
         IUserRepository<Data.Entities.Product> product;
+        private Data.Entities.AquariumModel dataEntity;
+        private List<ShoppingCartModel> listOfShoppingCart;
 
 
 
@@ -23,12 +25,19 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
         {
             this.interfaceobj = new UserRepository<Data.Entities.User>();
             this.product = new UserRepository<Data.Entities.Product>();
+            dataEntity = new AquariumModel();
+            listOfShoppingCart = new List<ShoppingCartModel>();
+
         }
 
 
         // GET: User
         public ActionResult Index()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var user = interfaceobj.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.User>();
             foreach (var c in user)
@@ -41,6 +50,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult GetUserById(int id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var user = interfaceobj.GetUserById(id);
             if(user!=null)
                 return View(Mapper.Map(user));
@@ -51,6 +64,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult userRegister()
         {
+
             return View();
         }
         [HttpPost]
@@ -112,6 +126,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult update(int id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var user = interfaceobj.GetUserById(id);
@@ -137,6 +155,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult delete(int? id)
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             interfaceobj.DeleteData(id);
@@ -147,11 +169,19 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult Dashboard()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
         }
 
         public ActionResult ChangePassword()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             return View();
         }
 
@@ -201,6 +231,10 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
 
         public ActionResult shopnow()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
             var prod = product.GetUser();
             var data = new List<P1_AquariumFishStore_TeamAkshay.Models.Product>();
             foreach (var c in prod)
@@ -209,7 +243,82 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             }
             return View(data);
         }
+        [HttpPost]
+        public JsonResult shopnow(int ItemId)
+        {
+            ShoppingCartModel objShoppingCartModel = new ShoppingCartModel();
+            Data.Entities.Product objItem = dataEntity.Products.Single(model => model.Id == ItemId);
+            if (Session["CartCounter"] != null)
+            {
+                listOfShoppingCart = Session["CartItem"] as List<ShoppingCartModel>;
+            }
+            if (listOfShoppingCart.Any(model => model.ProductId == ItemId))
+            {
+                objShoppingCartModel = listOfShoppingCart.Single(model => model.ProductId == ItemId);
+                objShoppingCartModel.Quantity += 1;
+                objShoppingCartModel.Total = objShoppingCartModel.Quantity * objShoppingCartModel.UnitPrice;
+            }
+            else
+            {
+                objShoppingCartModel.ProductId = ItemId;
+                objShoppingCartModel.ProductName = objItem.Name;
+                objShoppingCartModel.Quantity = 1;
+                objShoppingCartModel.Total = objItem.Price;
+                objShoppingCartModel.UnitPrice = objItem.Price;
+                listOfShoppingCart.Add(objShoppingCartModel);
+            }
+            Session["CartCounter"] = listOfShoppingCart.Count;
+            Session["CartItem"] = listOfShoppingCart;
+            return Json(new { Success = true, Counter = listOfShoppingCart.Count }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Cart()
+        {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("userLogin", "User");
+            }
+            listOfShoppingCart = Session["CartItem"] as List<ShoppingCartModel>;
+            return View(listOfShoppingCart);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrder()
+        {
+            int OrderId = 0;
+            listOfShoppingCart = Session["CartItem"] as List<ShoppingCartModel>;
+            Order orderObj = new Order()
+            {
+                OrderDate = DateTime.Now,
+                OrderNumber = String.Format("{0:ddmmyyyHHmm}", DateTime.Now)
+            };
+
+            dataEntity.Orders.Add(orderObj);
+            dataEntity.SaveChanges();
+            OrderId = orderObj.OrderId;            
+            foreach (var item in listOfShoppingCart)
+            {
+                OrderDetail OrderDetailObj = new OrderDetail();
+                OrderDetailObj.Total = item.Total;
+                OrderDetailObj.ProductId = item.ProductId;
+                OrderDetailObj.OrderId = OrderId;
+                OrderDetailObj.Quantity = (int)item.Quantity;
+                OrderDetailObj.UnitPrice = item.UnitPrice;
+                dataEntity.OrderDetails.Add(OrderDetailObj);
+                dataEntity.SaveChanges();
+            }
+            Session["CartCounter"] = null;
+            Session["CartItem"] = null;
+            return RedirectToAction("Dashboard", "User");
+        }
 
 
+       
     }
+
+   
+
+
+
+
 }
+    

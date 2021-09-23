@@ -11,19 +11,19 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
     public class UserRegister
     {
 
-        [DisplayName("Name:")]
+        [DisplayName("Name :")]
         [Required(ErrorMessage = "Name is required.")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Only Alphabets are allowed.")]
         public string Name { get; set; }
-
+        [DisplayName("Email :")]
         [Required(ErrorMessage = "Email is required.")]
         [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*",
         ErrorMessage = "Invalid Email.")]
         public string Email { get; set; }
-
+        [DisplayName("Gender :")]
         [Required(ErrorMessage = "Gender is required. ")]
         public int Gender { get; set; }
-
+        [DisplayName("Phone Number :")]
         [Required(ErrorMessage = "Phone Number is required.")]
  
         [RegularExpression("^[0-9]{10}$",
@@ -31,7 +31,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
         public string mobileNo { get; set; }
 
 
-        [DisplayName("Password:")]
+        [DisplayName("Password :")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Password is required.")]
         [RegularExpression(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$",
@@ -39,7 +39,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
     
         public string Password { get; set; }
 
-        [DisplayName("Re-Password:")]
+        [DisplayName("Confirm Password :")]
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string cPassword { get; set; }
