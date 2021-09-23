@@ -191,6 +191,19 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             return View(loc);
         }
 
+        public ActionResult productDelete(int id, int locId)
+        {
+            product.DeletePro(id, locId);
+            return RedirectToAction("Products", "Admin");
+
+        }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+
+        }
+
     }
 }
 

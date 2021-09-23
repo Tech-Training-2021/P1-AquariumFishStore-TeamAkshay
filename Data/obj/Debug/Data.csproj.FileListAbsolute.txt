@@ -10,3 +10,15 @@ D:\Final_MVC_Project\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.csproj.
 D:\Final_MVC_Project\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.dll
 D:\Final_MVC_Project\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.pdb
 D:\Final_MVC_Project\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\Data.dll.config
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\Data.dll
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\Data.pdb
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\EntityFramework.dll
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\EntityFramework.xml
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.csproj.CopyComplete
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.dll
+C:\dotnet\P1-AquariumFishStore-TeamAkshay\Data\obj\Debug\Data.pdb

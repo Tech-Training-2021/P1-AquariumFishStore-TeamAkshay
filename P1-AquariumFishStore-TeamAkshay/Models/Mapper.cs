@@ -84,6 +84,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Models
                     Location = p.LocationTable.Branch,
                     Quantity = product.Quantity,
                     ProductType = product.ProductType.Category,
+                    locationId = (int)p.LocationId,
 
                 };
                 pro.Add(xyz);

@@ -16,6 +16,8 @@ namespace Data.Repository
         void UpdateProduct(Product prod, int id);
         void DeleteData(int? id);
         void changepassword(string str , int id);
+        void DeletePro(int id, int locId);
+
         void Save();
     }
 }
