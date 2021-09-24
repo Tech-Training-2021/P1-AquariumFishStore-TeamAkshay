@@ -6,6 +6,12 @@
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
+<script>
+    function successfull() {
+        alert("Order placed Successfull. Thanks For Shopping with us.")
+    }
+</script>
+
 <h2>Shopping Cart</h2>
 <hr style="border-top: 2px solid maroon" />
 <br />
@@ -47,7 +53,7 @@
         <tr style="text-align: right">
             <td colspan="5">
                 <br />
-                <input type="submit" value="Buy" name="Save" class="btn btn-primary" id="SaveOrder" />
+                <input type="submit" value="Buy" name="Save" class="btn btn-primary" id="SaveOrder" onclick="successfull"/>
             </td>
         </tr>
 

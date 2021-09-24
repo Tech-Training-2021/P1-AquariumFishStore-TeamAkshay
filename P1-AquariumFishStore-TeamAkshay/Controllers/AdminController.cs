@@ -171,7 +171,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             user.DeleteData(id);
-            Session.Abandon();
+        
             return RedirectToAction("UserDetails", "Admin");
 
         }
@@ -185,7 +185,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             location.DeleteData(id);
-            Session.Abandon();
+            
             return RedirectToAction("Locations", "Admin");
 
         }
@@ -199,7 +199,7 @@ namespace P1_AquariumFishStore_TeamAkshay.Controllers
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             category.DeleteData(id);
-            Session.Abandon();
+            
             return RedirectToAction("Categories", "Admin");
 
         }
